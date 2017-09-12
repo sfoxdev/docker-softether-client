@@ -34,5 +34,5 @@ EXPOSE 443/tcp 992/tcp 1194/udp 5555/tcp
 
 VOLUME ["/etc/vpnclient", "/var/log/vpnclient"]
 
-ENTRYPOINT ["/entrypoint.sh"]
+USER root
 CMD ["/usr/vpnclient/vpnclient", "execsvc"]
