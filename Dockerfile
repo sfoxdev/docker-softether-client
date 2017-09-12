@@ -13,7 +13,6 @@ RUN set -ex ; \
     wget --no-check-certificate -O - https://github.com/SoftEtherVPN/SoftEtherVPN/archive/${SOFTETHER_VERSION}.tar.gz | tar xzf - ; \
     cd SoftEtherVPN-${SOFTETHER_VERSION:1} ; \
 
-    for file in /patchs/*.sh; do /bin/sh "$file"; done ; \
     cp src/makefiles/linux_64bit.mak Makefile ; \
     make ; make install ; make clean ; \
 
@@ -24,7 +23,7 @@ RUN set -ex ; \
     apk add --no-cache --virtual .run-deps libcap libcrypto1.0 libssl1.0 ncurses-libs readline su-exec ; \
 
     cd .. ; \
-    rm -rf /usr/vpnbridge /usr/bin/vpnbridge /usr/vpncmd /usr/bin/vpncmd /usr/vpnserver /usr/bin/vpnserver /usr/bin/vpnclient \
+    rm -rf /usr/vpnbridge /usr/bin/vpnbridge /usr/bin/vpncmd /usr/vpnserver /usr/bin/vpnserver /usr/bin/vpnclient \
         /patchs SoftEtherVPN-${SOFTETHER_VERSION:1} ;
 
 EXPOSE 443/tcp 992/tcp 1194/udp 5555/tcp
