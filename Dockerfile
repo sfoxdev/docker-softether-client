@@ -21,7 +21,7 @@ RUN set -ex ; \
     mkdir -p /var/log/vpnclient/client_log; ln -s /var/log/vpnclient/client_log /usr/vpnclient/client_log ; \
 
     apk del .build-deps ; \
-    apk add --no-cache --virtual .run-deps libcap libcrypto1.0 libssl1.0 ncurses-libs readline su-exec ; \
+    apk add --no-cache --virtual .run-deps libcap libcrypto1.0 libssl1.0 ncurses-libs readline su-exec curl dhclient ; \
 
     chown -R softether:softether /usr/vpnclient ; \
     setcap 'cap_net_bind_service=+ep' /usr/vpnclient/vpnclient ; \

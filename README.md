@@ -43,7 +43,7 @@ Hostname of IP Address of Destination:
 
 Connected to VPN Client "localhost".
 
-VPN Client>NicCreate myadapter
+VPN Client>NicCreate vpn
 
 VPN Client>AccountCreate myconnection
 
@@ -63,12 +63,36 @@ Confirm input: ********
 Specify standard or radius: standard
 The command completed successfully.
 
-VPN Client>
+VPN Client>AccountConnect myconnection
+AccountConnect command - Start Connection to VPN Server using VPN Connection Setting
+The command completed successfully.
+
+VPN Client>AccountStatusGet myconnection
+
+VPN Client>AccountList
+
+VPN Client>AccountStartupSet myconnection
+
+VPN Client>exit
+
+# dhclient vpn_vpn
+
+# ip addr show vpn_vpn
+
+# ip neigh
+
+# route -n
+
+# vi /etc/sysctl.conf
+net.ipv4.ip_forward=1
+
+# sysctl -p
+
 
 
 ```
 
 
 ```
-docker run -d --privileged --net host -v /srv/vpnclient/config:/etc/client:Z -v /srv/vpnclient/logs:/var/log/vpnclient:Z --cap-add NET_ADMIN -p 443:443/tcp -p 992:992/tcp -p 1194:1194/udp -p 5555:5555/tcp --name vpn-client sfoxdev/softether-client
+docker run -d --privileged --net host -v /srv/vpnclient/config:/etc/vpnclient:Z -v /srv/vpnclient/logs:/var/log/vpnclient:Z --cap-add NET_ADMIN -p 443:443/tcp -p 992:992/tcp -p 1194:1194/udp -p 5555:5555/tcp --name vpn-client sfoxdev/softether-client
 ```
